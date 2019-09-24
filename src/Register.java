@@ -28,7 +28,7 @@ public class Register extends javax.swing.JFrame {
      */
     
     public void loginm(){
-        String s = unField.getText();
+        String s = unFields.getText();
  String b = String.valueOf(pwField.getPassword());
  
  login q = new login();
@@ -102,7 +102,7 @@ public void locate(){
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        unField = new javax.swing.JTextField();
+        unFields = new javax.swing.JTextField();
         pwField = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -271,7 +271,7 @@ public void locate(){
                     .addComponent(jLabel1))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(unField, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                    .addComponent(unFields, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                     .addComponent(pwField))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -281,7 +281,7 @@ public void locate(){
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(unField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(unFields, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -521,6 +521,6 @@ int x=JOptionPane.showConfirmDialog(rootPane, "ARE YOU WANT TO EXIT?"," CONFIRMA
     private javax.swing.JPasswordField pwField;
     private javax.swing.JFrame regFrame;
     private javax.swing.JTextField un;
-    private javax.swing.JTextField unField;
+    private javax.swing.JTextField unFields;
     // End of variables declaration//GEN-END:variables
 }

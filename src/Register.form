@@ -333,7 +333,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="unField" pref="144" max="32767" attributes="0"/>
+                          <Component id="unFields" pref="144" max="32767" attributes="0"/>
                           <Component id="pwField" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -346,7 +346,7 @@
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="unField" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="unFields" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -375,7 +375,7 @@
                 <Property name="text" type="java.lang.String" value="PASSWORD:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="unField">
+            <Component class="javax.swing.JTextField" name="unFields">
             </Component>
             <Component class="javax.swing.JPasswordField" name="pwField">
               <Events>
