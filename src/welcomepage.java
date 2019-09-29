@@ -77,6 +77,7 @@ public class welcomepage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new javax.swing.JTable();
         lb1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         add.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -190,19 +191,30 @@ public class welcomepage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table1);
 
+        jButton1.setText("DELETE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addGap(22, 22, 22)
+                        .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,9 +223,12 @@ public class welcomepage extends javax.swing.JFrame {
                 .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -253,6 +268,43 @@ add.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ int selRow = table1.getSelectedRow();
+        if (selRow== -1){
+            JOptionPane.showMessageDialog(table1, 
+                    "Please Select Name From Table To Remove." , "Message",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            String name = table1.getValueAt(selRow,1).toString();
+            int opt = JOptionPane.showConfirmDialog(table1, "ARE YOU SURE YOU WANT TO DELETE\n"
+                    +name,"WARNING", JOptionPane.YES_OPTION);
+            if( opt== JOptionPane.YES_OPTION){
+                int a = JOptionPane.showConfirmDialog(table1," THIS WILL DELETE\n"
+                        +name,"Confirmation",JOptionPane.ERROR_MESSAGE, JOptionPane.OK_CANCEL_OPTION );
+                if (a== JOptionPane.OK_OPTION){
+                    int ii = Integer.parseInt(table1.getValueAt(selRow, 0).toString());
+                    try{
+                         Class.forName("com.mysql.jdbc.Driver");
+            Connection con =(Connection)DriverManager.getConnection("jdbc:mysql://localhost/registration?", "root", "");
+             String sql = "Delete from addproduct where ID = ?; ";
+                  PreparedStatement pstmt = con.prepareStatement(sql);
+                  pstmt.setInt(1, ii);
+                  pstmt.executeUpdate();
+                        
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(welcomepage.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(welcomepage.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }JOptionPane.showMessageDialog(table1, " Product " + name + " DELETED ");
+            }else{
+                
+            }
+        }
+       showRecords();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,6 +343,7 @@ add.setVisible(false);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Price1;
     private javax.swing.JFrame add;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel5;
