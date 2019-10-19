@@ -28,6 +28,30 @@ public class welcomepage extends javax.swing.JFrame {
         initComponents();lb1.setText("WELCOME!");
         showRecords();
     }
+    public void search(){
+        String pronm = searchfld.getText();
+        try{
+            String sql = "select * from addproduct where PRODUCT_NAME like ?;";
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/registration?", "root", "");
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%"+pronm+"%");
+            ResultSet rs = pstmt.executeQuery();
+            DefaultTableModel dtm = (DefaultTableModel)table1.getModel();
+            dtm.setRowCount(0);
+            if(!rs.isBeforeFirst()){
+                dtm.addRow(new Object[]{"NO DATA", "NO DATA", "NO DATA", "NO DATA"});
+            }else{
+                while(rs.next()){
+                    dtm.addRow(new Object[]{rs.getString("ID"),rs.getString("PRODUCT_NAME"),rs.getInt("QUANTITY"),rs.getInt("PRICE")});
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(welcomepage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(welcomepage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void showRecords(){
         String sql = "SELECT * FROM addproduct;";
         
@@ -88,8 +112,11 @@ public class welcomepage extends javax.swing.JFrame {
         lb1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        searchfld = new javax.swing.JTextField();
 
         add.setBackground(new java.awt.Color(102, 102, 102));
+        add.setMinimumSize(new java.awt.Dimension(413, 302));
 
         jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
         jLabel5.setText("Welcome!! ");
@@ -294,6 +321,14 @@ public class welcomepage extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("PRODUCT NAME:");
+
+        searchfld.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchfldKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -305,28 +340,37 @@ public class welcomepage extends javax.swing.JFrame {
                         .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(searchfld))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchfld, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -359,6 +403,9 @@ int x=prd.addProduct(pnm, qn, price);
 if(x==1){
 JOptionPane.showMessageDialog(rootPane, "PRODUCT INSERTED");
 add.setVisible(false);
+welcomepage wlmp = new welcomepage();
+wlmp.setVisible(true);
+wlmp.setLocationRelativeTo(null);
 }else{
     
 }
@@ -461,6 +508,10 @@ try{
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void searchfldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchfldKeyReleased
+search();        // TODO add your handling code here:
+    }//GEN-LAST:event_searchfldKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -507,6 +558,7 @@ try{
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
@@ -522,6 +574,7 @@ try{
     private javax.swing.JFormattedTextField price2;
     private javax.swing.JTextField prodname;
     private javax.swing.JSpinner quantity1;
+    private javax.swing.JTextField searchfld;
     private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
 }
