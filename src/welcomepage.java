@@ -72,12 +72,22 @@ public class welcomepage extends javax.swing.JFrame {
         quantity1 = new javax.swing.JSpinner();
         price1 = new javax.swing.JFormattedTextField();
         jButton2 = new javax.swing.JButton();
+        edit = new javax.swing.JFrame();
+        Price2 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        price2 = new javax.swing.JFormattedTextField();
+        jButton5 = new javax.swing.JButton();
+        prodname = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new javax.swing.JTable();
         lb1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         add.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -166,6 +176,88 @@ public class welcomepage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        edit.setMinimumSize(new java.awt.Dimension(433, 326));
+        edit.setUndecorated(true);
+
+        Price2.setBackground(new java.awt.Color(255, 153, 153));
+
+        jLabel9.setText("Prod id :");
+
+        jLabel10.setText("Product name :");
+
+        jLabel11.setText("Price:");
+
+        price2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jButton5.setText("Submit");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Price2Layout = new javax.swing.GroupLayout(Price2);
+        Price2.setLayout(Price2Layout);
+        Price2Layout.setHorizontalGroup(
+            Price2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Price2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(Price2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9))
+                .addGap(30, 30, 30)
+                .addGroup(Price2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(price2, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prodname))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Price2Layout.createSequentialGroup()
+                .addContainerGap(254, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(94, 94, 94))
+        );
+        Price2Layout.setVerticalGroup(
+            Price2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Price2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(Price2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(Price2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prodname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Price2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(price2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(72, 72, 72)
+                .addComponent(jButton5)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout editLayout = new javax.swing.GroupLayout(edit.getContentPane());
+        edit.getContentPane().setLayout(editLayout);
+        editLayout.setHorizontalGroup(
+            editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 433, Short.MAX_VALUE)
+            .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(editLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Price2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        editLayout.setVerticalGroup(
+            editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 326, Short.MAX_VALUE)
+            .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(editLayout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addComponent(Price2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
 
@@ -180,10 +272,7 @@ public class welcomepage extends javax.swing.JFrame {
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Product", "Quantity", "Price"
@@ -195,6 +284,13 @@ public class welcomepage extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("EDIT");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -211,7 +307,8 @@ public class welcomepage extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -226,7 +323,9 @@ public class welcomepage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
@@ -305,6 +404,63 @@ add.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+int row = table1.getSelectedRow();
+
+if(row==-1){
+    JOptionPane.showMessageDialog(table1, "PLEASE SELECT A PRODUCT","ERROR",JOptionPane.ERROR_MESSAGE);
+}else{
+    String x = table1.getValueAt(row, 0).toString();
+    String y = table1.getValueAt(row, 1).toString();
+    String z = table1.getValueAt(row, 3).toString();
+    
+    id.setText(x);
+    prodname.setText(y);
+    price2.setText(z);
+    
+    edit.setVisible(true);
+    edit.setLocationRelativeTo(null);
+    
+}
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+int x = Integer.parseInt(id.getText());
+String y = prodname.getText();
+int z = Integer.parseInt(price2.getText());
+
+try{
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/registration?","root","");
+    String sql = "Update addproduct set PRODUCT_NAME =? , PRICE =? where ID =?;";
+    PreparedStatement pstmt = con.prepareStatement(sql);
+    pstmt.setString(1, y);
+    pstmt.setInt(2, z);
+    pstmt.setInt(3, x);
+    
+    pstmt.executeUpdate();
+    JOptionPane.showMessageDialog(null,"PRODUCT UPDATED");
+    id.setText("");
+    prodname.setText("");
+    price2.setText("");
+    edit.setVisible(false);
+    showRecords();
+    
+    
+    
+}       catch (ClassNotFoundException ex) {
+            Logger.getLogger(welcomepage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(welcomepage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,19 +498,29 @@ add.setVisible(false);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Price1;
+    private javax.swing.JPanel Price2;
     private javax.swing.JFrame add;
+    private javax.swing.JFrame edit;
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb1;
     private javax.swing.JTextField pn1;
     private javax.swing.JFormattedTextField price1;
+    private javax.swing.JFormattedTextField price2;
+    private javax.swing.JTextField prodname;
     private javax.swing.JSpinner quantity1;
     private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
