@@ -38,4 +38,24 @@ public class product_class {
         }
      return opt;
     }
+    
+   public int addQuantity(int id, Object quantity){
+       int s=0;
+       try{
+           Class.forName("com.mysql.jdbc.Driver");
+           Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/registration?", "root", "");
+           PreparedStatement pstmt=con.prepareStatement("update addproduct set QUANTITY=(QUANTITY+ ?) where ID=?");
+           pstmt.setObject(1, quantity);
+           pstmt.setInt(2, id);
+           s=pstmt.executeUpdate();
+       } catch (ClassNotFoundException ex) {
+            Logger.getLogger(product_class.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(product_class.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       
+       return s;
+       
+   }
 }
