@@ -32,11 +32,12 @@ int Pid =0;
     public void search(){
         String pronm = searchfld.getText();
         try{
-            String sql = "select * from addproduct where PRODUCT_NAME like ?;";
+            String sql = "select * from addproduct where PRODUCT_NAME like ? or ID like ?;";
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/registration?", "root", "");
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "%"+pronm+"%");
+            pstmt.setString(2, "%"+pronm+"%");
             ResultSet rs = pstmt.executeQuery();
             DefaultTableModel dtm = (DefaultTableModel)table1.getModel();
             dtm.setRowCount(0);
